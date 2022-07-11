@@ -8,23 +8,47 @@ function App() {
   const getAlerts = () => {
     console.log(data);
     if (data.alerts) {
-      let x = 0;
+      let id = 0;
       return data.alerts.alert.map((item) => {
-        x++;
+        id++;
         if (item.msgtype === 'Alert') {
           return (
-            <div className="alert-notif" key={x}>
+            <div className="alert-notif" key={id}>
               {item.event} - {item.areas}: {item.instruction}
             </div>
           );
         }
         return (
-          <div key={x} className="alert-none">
+          <div key={id} className="alert-none">
             No Alert
           </div>
         );
       });
     }
+  };
+
+  const getForecast = () => {
+    if (data.forecast) {
+      return data.forecast.forecastday.map((e) => {
+        return (
+          <button key={e.date_epoch}>
+            {new Date(e.date).toDateString()}
+            <span className="temperatures">H: {e.day.maxtemp_f}</span>
+            <span className="temperatures">L: {e.day.mintemp_f}</span>
+          </button>
+        );
+      });
+    }
+    // else {
+    //   let DATE_CURRENT = new Date();
+    //   return (
+    //     <div className="condensed-forecast">
+    //       <button>{DATE_CURRENT.toDateString()}</button>
+    //       <button>{(DATE_CURRENT.getDate() + 1).toDateString()}</button>
+    //       <button>{(DATE_CURRENT.getDate() + 2).toDateString()}</button>
+    //     </div>
+    //   );
+    // }
   };
 
   useEffect(() => {
@@ -43,11 +67,7 @@ function App() {
   return (
     <div className="App">
       <div className="alerts">{getAlerts()}</div>
-      <div className="condensed-forecast">
-        <button>Day 1</button>
-        <button>Day 2</button>
-        <button>Day 3</button>
-      </div>
+      <div className="condensed-forecast">{getForecast()}</div>
     </div>
   );
 }
