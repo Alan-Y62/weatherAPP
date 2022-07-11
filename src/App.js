@@ -39,16 +39,6 @@ function App() {
         );
       });
     }
-    // else {
-    //   let DATE_CURRENT = new Date();
-    //   return (
-    //     <div className="condensed-forecast">
-    //       <button>{DATE_CURRENT.toDateString()}</button>
-    //       <button>{(DATE_CURRENT.getDate() + 1).toDateString()}</button>
-    //       <button>{(DATE_CURRENT.getDate() + 2).toDateString()}</button>
-    //     </div>
-    //   );
-    // }
   };
 
   useEffect(() => {
