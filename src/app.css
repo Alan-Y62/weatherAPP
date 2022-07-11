@@ -1,0 +1,42 @@
+.alerts {
+  row-gap: 1rem;
+}
+
+.alerts .alert-none {
+  display: none;
+}
+
+.alerts .alert-notif {
+  height: 50px;
+  padding-top: 12.5px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: rgba(72, 72, 236, 0.247);
+  border-radius: 10px;
+}
+
+.condensed-forecast {
+  display: flex;
+  justify-content: center;
+  gap: 0 2px;
+  margin: 4rem auto;
+}
+
+button {
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  width: 200px;
+  aspect-ratio: 1 / 1.25;
+  color: white;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.31);
+  color: black;
+}
+
+button:focus {
+  background: rgba(255, 255, 255, 0.651);
+  color: black;
+}
