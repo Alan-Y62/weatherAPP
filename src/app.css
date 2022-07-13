@@ -7,19 +7,35 @@
 }
 
 .alerts .alert-notif {
-  height: 50px;
+  height: fit-content;
   padding-top: 12.5px;
   margin: 0 auto;
   text-align: center;
   background-color: rgba(72, 72, 236, 0.247);
-  border-radius: 10px;
+}
+
+.alerts .alert-notif:nth-child(odd) {
+  background-color: rgba(72, 72, 236, 0.582);
 }
 
 .condensed-forecast {
   display: flex;
   justify-content: center;
   gap: 0 2px;
-  margin: 4rem auto;
+  margin: 1rem auto;
+}
+
+.expanded-forecast {
+  max-width: 800px;
+  width: 50vw;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.expanded-forecast img {
+  margin: 0 auto;
+  width: 100px;
+  aspect-ratio: 1 / 1;
 }
 
 button {
