@@ -17,6 +17,7 @@ function App() {
     SW: '&#8601;',
     SSW: '&#8595; &#8601;',
     W: '&#8592;',
+    WSW: '&#8592; &#8601;',
     NNW: '&#8593; &#8598;',
     NW: '&#8598;',
   };
@@ -57,11 +58,11 @@ function App() {
   };
 
   const getLongForecast = () => {
-    console.log(dateFocused);
     const prefix = 'https:';
     let parser = new DOMParser();
-    const currentSpeed = dateFocused.hour[new Date().getHours()];
     if (dateFocused.day) {
+      console.log(dateFocused);
+      const currentSpeed = dateFocused.hour[new Date().getHours()];
       return (
         <>
           <img
@@ -76,12 +77,14 @@ function App() {
           </div>
           <div>
             Wind: {dateFocused.hour[new Date().getHours()].wind_mph}
-            {
-              parser.parseFromString(
-                directionMap[currentSpeed.wind_dir],
-                'text/html'
-              ).body.childNodes[0].textContent
-            }
+            <span className="wind_direction">
+              {
+                parser.parseFromString(
+                  directionMap[currentSpeed.wind_dir],
+                  'text/html'
+                ).body.childNodes[0].textContent
+              }
+            </span>
           </div>
         </>
       );
