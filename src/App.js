@@ -1,10 +1,11 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import './app.css';
 
 function App() {
   const [data, setData] = useState({});
   const [dateFocused, setFocus] = useState({});
+  const [time, setTime] = useState(6);
 
   const directionMap = {
     N: '&#8593;',
@@ -61,7 +62,6 @@ function App() {
     const prefix = 'https:';
     let parser = new DOMParser();
     if (dateFocused.day) {
-      console.log(dateFocused);
       const currentSpeed = dateFocused.hour[new Date().getHours()];
       return (
         <>
@@ -69,7 +69,9 @@ function App() {
             src={prefix.concat('', dateFocused.day.condition.icon)}
             alt={dateFocused.day.condition.text}
           ></img>
-          <div>{dateFocused.day.condition.text}</div>
+          <div className="weather_condition">
+            {dateFocused.day.condition.text}
+          </div>
           <div>Max Temperature: {dateFocused.day.maxtemp_f}</div>
           <div>Min Temperature: {dateFocused.day.mintemp_f}</div>
           <div>
@@ -93,20 +95,39 @@ function App() {
     }
   };
 
+  const checkTime = useCallback(() => {
+    console.log('time checked');
+    setTime(new Date().getHours());
+    // if (time < 6 || time > 18) {
+    //   document.body.classList = 'night';
+    // } else if (time >= 11) {
+    //   document.body.classList = 'afternoon';
+    // } else {
+    //   document.body.classList = 'morning';
+    // }
+    document.body.classList =
+      time < 6 || time > 18 ? 'night' : time >= 11 ? 'afternoon' : 'morning';
+  }, [time]);
+
+  setInterval(checkTime, 3600000);
+
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(
+          'http://api.weatherapi.com/v1/forecast.json?key=54159b05af584cbfb53174253221107&q=New York City&days=7&aqi=no&alerts=yes'
+        );
+        setData(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    try {
-      const res = await axios.get(
-        'http://api.weatherapi.com/v1/forecast.json?key=54159b05af584cbfb53174253221107&q=New York City&days=7&aqi=no&alerts=yes'
-      );
-      setData(res.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  useEffect(() => {
+    checkTime();
+  }, [checkTime]);
 
   return (
     <div className="App">

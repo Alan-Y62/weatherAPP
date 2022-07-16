@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap');
+/* font import playfair display' */
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+}
+
 .alerts {
   row-gap: 1rem;
   font-size: 1.25rem;
@@ -21,6 +28,17 @@
   gap: 0 2px;
   margin: 1rem auto;
   font-size: 1.5rem;
+  position: relative;
+}
+
+.condensed-forecast::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 80vw;
+  height: 2px;
+  background-color: white;
 }
 
 .expanded-forecast {
@@ -35,6 +53,11 @@
   margin: 0 auto;
   width: 200px;
   aspect-ratio: 1 / 1;
+}
+
+.expanded-forecast .weather_condition {
+  font-weight: bold;
+  text-transform: capitalize;
 }
 
 button {
@@ -58,6 +81,10 @@ button:focus {
 
 .temperatures {
   display: block;
+}
+
+.temperatures:first-child {
+  margin-top: 1.25rem;
 }
 
 .wind_direction {
