@@ -98,13 +98,6 @@ function App() {
   const checkTime = useCallback(() => {
     console.log('time checked');
     setTime(new Date().getHours());
-    // if (time < 6 || time > 18) {
-    //   document.body.classList = 'night';
-    // } else if (time >= 11) {
-    //   document.body.classList = 'afternoon';
-    // } else {
-    //   document.body.classList = 'morning';
-    // }
     document.body.classList =
       time < 6 || time > 18 ? 'night' : time >= 11 ? 'afternoon' : 'morning';
   }, [time]);
