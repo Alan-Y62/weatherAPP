@@ -35,7 +35,22 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+}
+
+body.morning {
   background: linear-gradient(179.71deg, #87cafb 89.49%, #edcf80 106.67%);
+}
+
+body.afternoon {
+  background: linear-gradient(214.98deg, #f4ffaf 0%, #00d1ff 73.4%);
+}
+
+body.night {
+  background: linear-gradient(
+    139.26deg,
+    #162186 23.79%,
+    rgba(0, 0, 0, 0) 96.77%
+  );
 }
 
 /* A elements that don't have a class get default styles */
