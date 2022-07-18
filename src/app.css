@@ -9,7 +9,7 @@ body {
   row-gap: 1rem;
   font-size: 1.25rem;
   height: 25vh;
-  max-height: 500px;
+  max-height: 450px;
   overflow: auto;
 }
 

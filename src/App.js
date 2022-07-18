@@ -50,8 +50,8 @@ function App() {
         return (
           <button key={e.date_epoch} onClick={() => setFocus(e)}>
             {new Date(e.hour[0].time).toDateString()}
-            <span className="temperatures">H: {e.day.maxtemp_f}</span>
-            <span className="temperatures">L: {e.day.mintemp_f}</span>
+            <span className="temperatures">H: {e.day.maxtemp_f}&#176;F</span>
+            <span className="temperatures">L: {e.day.mintemp_f}&#176;F</span>
           </button>
         );
       });
@@ -72,13 +72,13 @@ function App() {
           <div className="weather_condition">
             {dateFocused.day.condition.text}
           </div>
-          <div>Max Temperature: {dateFocused.day.maxtemp_f}</div>
-          <div>Min Temperature: {dateFocused.day.mintemp_f}</div>
+          <div>Max Temperature: {dateFocused.day.maxtemp_f}&#176;F</div>
+          <div>Min Temperature: {dateFocused.day.mintemp_f}&#176;F</div>
           <div>
-            Chance of Rain Today: {dateFocused.day.daily_chance_of_rain}
+            Chance of Rain Today: {dateFocused.day.daily_chance_of_rain}%
           </div>
           <div>
-            Wind: {dateFocused.hour[new Date().getHours()].wind_mph}
+            Wind: {dateFocused.hour[new Date().getHours()].wind_mph}mph &nbsp;
             <span className="wind_direction">
               {
                 parser.parseFromString(
