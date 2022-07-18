@@ -8,6 +8,9 @@ body {
 .alerts {
   row-gap: 1rem;
   font-size: 1.25rem;
+  height: 25vh;
+  max-height: 450px;
+  overflow: auto;
 }
 
 .alerts .alert-none {
@@ -16,7 +19,7 @@ body {
 
 .alerts .alert-notif {
   height: fit-content;
-  padding-top: 12.5px;
+  padding: 12.5px 12.5px 0 12.5px;
   margin: 0 auto;
   text-align: center;
   background-color: #6cb4e7b7;
