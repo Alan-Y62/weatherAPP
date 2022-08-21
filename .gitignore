@@ -11,6 +11,8 @@
 # production
 /build
 
+apikey.txt
+
 # misc
 .DS_Store
 .env.local
