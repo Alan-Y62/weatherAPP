@@ -46,11 +46,7 @@ body.afternoon {
 }
 
 body.night {
-  background: linear-gradient(
-    139.26deg,
-    #162186 23.79%,
-    rgba(0, 0, 0, 0) 96.77%
-  );
+  background: linear-gradient(139.26deg, #162186 23.79%, rgba(0, 0, 0, 0) 450%);
 }
 
 /* A elements that don't have a class get default styles */
